@@ -1,0 +1,322 @@
+/* General Styles */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg-color: #fff;
+    --card-border-color: #eee;
+    --input-bg-color: #fff;
+    --input-border-color: #ced4da;
+    --input-text-color: #495057;
+    --input-placeholder-color: #6c757d;
+    --input-focus-border-color: #80bdff;
+    --input-focus-shadow-color: rgba(0, 123, 255, 0.25);
+    --purchased-bg-color: #f0f9ff;
+    --purchased-text-color: #6c757d;
+    --category-header-bg-color: #f8f9fa;
+    --category-item-border-color: #e9ecef;
+    --highlight-bg-color: #bde0fe;
+    --highlight-text-color: #000;
+    --btn-shadow-color: rgba(0,0,0,0.1);
+    --text-shadow-color: rgba(0,0,0,0.1);
+
+    /* Bootstrap colors for overrides */
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --white: #fff;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg-color: #2d2d2d;
+    --card-border-color: #404040;
+    --input-bg-color: #404040;
+    --input-border-color: #555;
+    --input-text-color: #e0e0e0;
+    --input-placeholder-color: #aaa;
+    --input-focus-border-color: var(--primary);
+    --input-focus-shadow-color: rgba(0, 123, 255, 0.25);
+    --purchased-bg-color: #2a3a4a;
+    --purchased-text-color: var(--secondary);
+    --category-header-bg-color: #404040;
+    --category-item-border-color: #555;
+    --highlight-bg-color: #4a5568;
+    --highlight-text-color: #e0e0e0;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: var(--bg-color) !important; /* Use important to override bootstrap */
+    color: var(--text-color);
+}
+
+/* Override Bootstrap's .bg-light */
+.bg-light {
+    background-color: var(--bg-color) !important;
+}
+
+.card {
+    border: 1px solid var(--card-border-color);
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.form-control, .form-select {
+    background-color: var(--input-bg-color);
+    border-color: var(--input-border-color);
+    color: var(--input-text-color);
+}
+
+.form-control:focus {
+    background-color: var(--input-bg-color);
+    border-color: var(--input-focus-border-color);
+    color: var(--input-text-color);
+    box-shadow: 0 0 0 0.2rem var(--input-focus-shadow-color);
+}
+
+.form-control::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.input-group-text {
+    background-color: var(--input-bg-color);
+    border-color: var(--input-border-color);
+    color: var(--text-color);
+}
+
+.dropdown-menu {
+    background-color: var(--card-bg-color);
+    border-color: var(--card-border-color);
+}
+
+.dropdown-item {
+    color: var(--text-color);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+}
+
+/* Remove all the specific dark-mode overrides */
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-body, #add-item-form, .list-group-item {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--btn-shadow-color);
+}
+
+/* Item List Styles */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 10px !important;
+    border: 1px solid var(--card-border-color);
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.list-group-item.purchased {
+    background-color: var(--purchased-bg-color);
+}
+
+.list-group-item.purchased .item-text {
+    text-decoration: line-through;
+    color: var(--purchased-text-color);
+}
+
+.item-text {
+    flex-grow: 1;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.item-actions .btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+}
+
+/* RTL Support */
+html[dir="rtl"] .me-2 {
+    margin-left: 0.5rem !important;
+    margin-right: 0 !important;
+}
+
+html[dir="rtl"] .item-text {
+    margin: 0 15px;
+}
+
+/* Language change animation */
+.lang-change-animation {
+    animation: lang-pulse 0.5s ease-in-out;
+}
+
+@keyframes lang-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Search Highlight Style */
+.item-text mark {
+    padding: 0 2px;
+    background-color: var(--highlight-bg-color);
+    color: var(--highlight-text-color);
+    border-radius: 3px;
+}
+
+/* Category Styles */
+.category-header {
+    background-color: var(--category-header-bg-color) !important;
+    border: none !important;
+    padding: 0.75rem 1rem !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 8px !important;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.category-tag {
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 0 1px 2px var(--text-shadow-color);
+}
+
+.category-count {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+.category-item {
+    margin-left: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    border-left: 3px solid var(--category-item-border-color) !important;
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.item-category-tag {
+    color: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-shadow: 0 1px 1px var(--text-shadow-color);
+    white-space: nowrap;
+}
+
+/* RTL Support for Categories */
+html[dir="rtl"] .category-item {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+    border-right: 3px solid var(--category-item-border-color) !important;
+    border-left: none !important;
+}
+
+html[dir="rtl"] .item-content {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .category-title {
+    flex-direction: row-reverse;
+}
+
+/* Keep bootstrap button overrides for dark mode as they are complex to just do with vars */
+body.dark-mode .btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+body.dark-mode .btn-outline-secondary {
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+body.dark-mode .btn-outline-success {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+body.dark-mode .btn-outline-success:hover {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+body.dark-mode .btn-outline-danger {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+body.dark-mode .badge {
+    color: var(--white);
+}
+
+/* Undo Notification Style */
+#undo-container.show {
+    display: flex !important; /* Use important to override bootstrap's fade */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Drag and Drop Styles */
+.list-group-item.dragging {
+    opacity: 0.5;
+}
+
+.list-group-item.drag-over {
+    border-top: 2px solid var(--primary);
+}
